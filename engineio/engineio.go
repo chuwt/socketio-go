@@ -2,12 +2,15 @@ package engineio
 
 import (
 	"fmt"
+	"github.com/chuwt/socketio-go/common/b64id"
 	"github.com/chuwt/socketio-go/common/json"
 	"net/http"
 	"strings"
 )
 
 type EngineIO struct {
+	b64Id b64id.B64Id
+
 	pingTimeout  int64
 	pingInterval int64
 
@@ -35,7 +38,7 @@ func (eio *EngineIO) onOpen() []byte {
 		eio.open()
 	}
 
-	handshake := NewHandshake("chuwt", eio.pingTimeout, eio.pingInterval)
+	handshake := NewHandshake(eio.b64Id.GenerateId(), eio.pingTimeout, eio.pingInterval)
 	return append([]byte("0"), handshake.Json()...)
 }
 

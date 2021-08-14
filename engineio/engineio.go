@@ -2,8 +2,8 @@ package engineio
 
 import (
 	"fmt"
-	"github.com/chuwt/socketio-go/common/b64id"
-	"github.com/chuwt/socketio-go/common/json"
+	"github.com/chuwt/socketio-go/internal/b64id"
+	"github.com/chuwt/socketio-go/internal/json"
 	"net/http"
 	"strings"
 )
